@@ -28,7 +28,6 @@
 
     <TextView
         android:id="@+id/label_connectionStatus"
-        android:text=   "@string/label_connectionStatus"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:layout_width="wrap_content"
@@ -50,7 +49,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connect to your Flic by clicking the button below."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.UUID;
@@ -87,6 +88,7 @@ public class AlertServiceFragment extends Fragment {
     };
 
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -96,7 +98,7 @@ public class AlertServiceFragment extends Fragment {
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mYourBroadcastReceiver,
                 new IntentFilter("SPIN_BUTTON"));
 
-        Button notifyButton = view.findViewById(R.id.button_immediateAlertLevelNotify);
+        ImageButton notifyButton = view.findViewById(R.id.button_immediateAlertLevelNotify);
         notifyButton.setOnClickListener(mNotifyButtonListener);
 
         setImmediateAlertLevel(INITIAL_IMMEDIATE_ALERT_LEVEL, null);

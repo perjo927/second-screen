@@ -24,15 +24,6 @@
             </intent-filter>
         </activity>
 
-        <receiver
-            android:name=".ButtonBroadcastReceiver"
-            android:enabled="true"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="io.flic.FLICLIB_EVENT" />
-            </intent-filter>
-        </receiver>
-
     </application>
 
 </manifest>

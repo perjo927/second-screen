@@ -1,5 +1,5 @@
 # flictooth
-Flic + Web Bluetooth
+Web Bluetooth
 
 ## About
-Connect your Flic button and pair with Web Bluetooth
+Connect your Chrome web page in your Android device and pair with Web Bluetooth

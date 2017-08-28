@@ -4,17 +4,9 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Toast;
-
-import io.flic.lib.FlicAppNotInstalledException;
-import io.flic.lib.FlicBroadcastReceiverFlags;
-import io.flic.lib.FlicButton;
-import io.flic.lib.FlicManager;
-import io.flic.lib.FlicManagerInitializedCallback;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -95,19 +87,6 @@ public class MainActivity extends AppCompatActivity implements AlertServiceFragm
             mAdvStatus.setText(R.string.status_advertising);
         }
     };
-
-    public void grabButton(View v) {
-        try {
-            FlicManager.getInstance(this, new FlicManagerInitializedCallback() {
-                @Override
-                public void onInitialized(FlicManager manager) {
-                    manager.initiateGrabButton(MainActivity.this);
-                }
-            });
-        } catch (FlicAppNotInstalledException err) {
-            Toast.makeText(this, "Flic App is not installed", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     private BluetoothGattServer mGattServer;
     private final BluetoothGattServerCallback mGattServerCallback = new BluetoothGattServerCallback() {
@@ -207,18 +186,8 @@ public class MainActivity extends AppCompatActivity implements AlertServiceFragm
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Config.setFlicCredentials();
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                grabButton(view);
-            }
-        });
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         mAdvStatus = (TextView) findViewById(R.id.textView_advertisingStatus);
@@ -273,19 +242,6 @@ public class MainActivity extends AppCompatActivity implements AlertServiceFragm
                 finish();
             }
         }
-
-        FlicManager.getInstance(this, new FlicManagerInitializedCallback() {
-            @Override
-            public void onInitialized(FlicManager manager) {
-                FlicButton button = manager.completeGrabButton(requestCode, resultCode, data);
-                if (button != null) {
-                    button.registerListenForBroadcast(FlicBroadcastReceiverFlags.UP_OR_DOWN | FlicBroadcastReceiverFlags.REMOVED);
-                    Toast.makeText(MainActivity.this, "Grabbed a button", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MainActivity.this, "Did not grab any button", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 
     @Override

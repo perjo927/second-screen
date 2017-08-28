@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WebTooth</string>
+    <string name="app_name">Second Screen</string>
 
     <string name="label_advertisingStatus">Advertising Status</string>
     <string name="status_advertising">Advertising (Lock Screen)</string>
@@ -16,13 +16,10 @@
     <string name="bluetoothNotEnabled">BLE closing (Bluetooth is Not Enabled)</string>
     <string name="bluetoothAdvertisingNotSupported">BLE closing (BLE Advertising Not Supported)</string>
 
-    <string name="label_connectionStatus">Connection Status</string>
     <string name="status_devicesConnected">Devices Connected:</string>
     <string name="status_errorWhenConnecting">An error occurred when connecting to a device. Error Code</string>
 
-    <string name="immediateAlertService_name">Immediate Alert Service</string>
-
-    <string name="notify">Notify</string>
+    <string name="notify">PLAY</string>
     <string name="notificationsEnabled">Notifications enabled</string>
     <string name="notificationsNotEnabled">Notifications not enabled</string>
 
